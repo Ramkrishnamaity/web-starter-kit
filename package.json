@@ -23,8 +23,7 @@
     "next-javascript-generator",
     "next-typescript-generator"
   ],
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "prompts": "^2.4.2"
   }
 }
