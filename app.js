@@ -2,13 +2,8 @@
 
 import prompts from 'prompts'
 import { execSync } from "child_process"
-
-
-// const args = process.argv.slice(1);
-// if (!args.includes("web-starter-kit@latest")) {
-//     console.log("Usage: npx web-starter-kit@latest");
-//     process.exit(-1)
-// }
+import fs from 'fs';
+import path from 'path';
 
 const runCommand = (cmd) => {
     try {
@@ -20,6 +15,10 @@ const runCommand = (cmd) => {
     return true
 }
 
+const isDirectoryExists = (dirName) => {
+    const dirPath = path.join(process.cwd(), dirName)
+    return fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory()
+};
 
 prompts([
     {
@@ -48,6 +47,17 @@ prompts([
         inactive: 'no'
     }
 ]).then((answer) => {
+
+    if (!answer.name || (answer.project === undefined) || (answer.language === undefined)) {
+        console.log("Failed to execute, select all options!")
+        process.exit(-1)
+    }
+
+    if(isDirectoryExists(answer.name)) {
+        console.log("Failed to execute, Folder already exist!")
+        process.exit(-1)
+    }
+
     const { name, project, language } = answer
 
     const afterInstallationCmd = `cd ${name} && npm i -g yarn && yarn`
@@ -59,13 +69,13 @@ prompts([
     const repoForNextjsInTs = `git clone --depth 1 https://github.com/Ramkrishnamaity/next-starter-ts.git ${name}`
 
     let cmd = ''
-    if (project === "NodeJs") {
+    if (project === 0) {
         if (!language) {
             cmd = repoForNodejsInJs
         } else {
             cmd = repoForNodejsInTs
         }
-    } else if (project === "ReactJs") {
+    } else if (project === 1) {
         if (!language) {
             cmd = repoForReactjsInJs
         } else {
