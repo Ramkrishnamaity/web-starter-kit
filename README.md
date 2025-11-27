@@ -8,5 +8,5 @@ This plugin provides ReactJs, NodeJs project template in both JavaScript And Typ
 Follow the instruction given bellow 
 
 ```shell
-npx web-starter-kit@latest
+npx @_ramkrishna11/web-starter-kit@latest
 ```
