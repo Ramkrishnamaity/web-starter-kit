@@ -1,6 +1,6 @@
 {
   "name": "@_ramkrishna11/web-starter-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a Starter Pack for Js based Web Project",
   "main": "app.js",
   "type": "module",
