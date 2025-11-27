@@ -1,6 +1,6 @@
 {
-  "name": "web-plugin-kit",
-  "version": "1.0.5",
+  "name": "web-starter-kit",
+  "version": "1.0.0",
   "description": "This is a Starter Pack for Js based Web Project",
   "main": "app.js",
   "type": "module",

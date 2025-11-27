@@ -33,8 +33,7 @@ prompts([
         message: 'What type of project you want to create',
         choices: [
             'NodeJs',
-            'ReactJs',
-            'NextJs'
+            'ReactJs'
         ],
         initial: 0
     },
@@ -65,8 +64,6 @@ prompts([
     const repoForNodejsInTs = `git clone --depth 1 https://github.com/Ramkrishnamaity/node-starter-ts.git ${name}`
     const repoForReactjsInJs = `git clone --depth 1 https://github.com/Ramkrishnamaity/react-starter-js.git ${name}`
     const repoForReactjsInTs = `git clone --depth 1 https://github.com/Ramkrishnamaity/react-starter-ts.git ${name}`
-    const repoForNextjsInJs = `git clone --depth 1 https://github.com/Ramkrishnamaity/next-starter-js.git ${name}`
-    const repoForNextjsInTs = `git clone --depth 1 https://github.com/Ramkrishnamaity/next-starter-ts.git ${name}`
 
     let cmd = ''
     if (project === 0) {
@@ -75,17 +72,11 @@ prompts([
         } else {
             cmd = repoForNodejsInTs
         }
-    } else if (project === 1) {
+    } else {
         if (!language) {
             cmd = repoForReactjsInJs
         } else {
             cmd = repoForReactjsInTs
-        }
-    } else {
-        if (!language) {
-            cmd = repoForNextjsInJs
-        } else {
-            cmd = repoForNextjsInTs
         }
     }
     const clone = runCommand(cmd)
